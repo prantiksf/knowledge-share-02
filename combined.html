@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Combined Components</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Lato, sans-serif; background: #1A1D29; }
+        
+        .app-container {
+            width: 1024px;
+            height: 768px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Top Bar Styles */
+        .top-bar {
+            background: #481349;
+            width: 100%;
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .left { width: 76px; height: 100%; display: flex; align-items: center; justify-content: center; }
+        .system-area { padding: 0 12px; }
+        .stoplights { display: flex; gap: 8px; }
+        .stoplight { width: 12px; height: 12px; }
+        
+        .navigation { 
+            width: 230px; 
+            height: 40px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: flex-end;
+            padding: 0 8px;
+            gap: 8px;
+        }
+        
+        .switcher { 
+            flex: 1; 
+            display: flex; 
+            align-items: center;
+            padding: 2px 4px;
+        }
+        
+        .chrome-btn {
+            width: 28px; 
+            height: 28px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .chrome-btn.active {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .chrome-btn.disabled {
+            opacity: 0.4;
+        }
+        
+        .arrows { display: flex; gap: 4px; }
+        
+        .search-input {
+            flex: 1;
+            min-width: 300px;
+            height: 28px;
+            background: rgba(249, 237, 255, 0.25);
+            border: none;
+            border-radius: 6px;
+            padding: 0 12px;
+            color: white;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .search-icon { width: 18px; height: 18px; }
+        
+        .right {
+            width: 260px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 8px;
+        }
+        
+        .slack-icons { padding: 0 8px; }
+        
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            display: flex;
+        }
+        
+        /* Conv AI Nav Styles */
+        .conv-ai-nav {
+            width: 76px;
+            height: 100%;
+            background: #19171D;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 6px 0 12px 0;
+        }
+        
+        .workspace-switcher {
+            width: 36px;
+            height: 36px;
+            position: relative;
+        }
+        
+        .workspace-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.08);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .tabs-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+            padding-top: 4px;
+        }
+        
+        .tab {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            position: relative;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        .tab.active {
+            background: rgba(249, 237, 255, 0.25);
+        }
+        
+        .tab-icon {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .tab-label {
+            position: absolute;
+            bottom: -18px;
+            font-size: 11px;
+            font-weight: bold;
+            color: rgba(244, 218, 255, 0.8);
+            text-align: center;
+            width: 68px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .tab.active .tab-label {
+            color: white;
+        }
+        
+        .action-button {
+            width: 36px;
+            height: 36px;
+            background: rgba(249, 237, 255, 0.25);
+            border: none;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .profile {
+            width: 36px;
+            height: 36px;
+            position: relative;
+        }
+        
+        .profile-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 18px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .status-indicator {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 14px;
+            height: 14px;
+        }
+        
+        /* Placeholder for future components */
+        .content-area {
+            flex: 1;
+            background: #1A1D29;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="left">
+                <div class="system-area">
+                    <div class="stoplights">
+                        <img class="stoplight" src="c93e6cb03fc31a59c3560a7de9fa6fe7d089338f.svg" alt="">
+                        <img class="stoplight" src="2c7d9e6b65ec9107e029d45806d249e00a54b1b4.svg" alt="">
+                        <img class="stoplight" src="26b1599335f900d9786d46b0697d03b7570bfae5.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation">
+                <div class="switcher">
+                    <div class="chrome-btn">
+                        <img src="10e4a259e9f2ab48acabfbc8a04f4e48c23e2a56.svg" width="20" height="20" alt="">
+                    </div>
+                </div>
+                
+                <div class="arrows">
+                    <div class="chrome-btn active">
+                        <img src="8b04413a35777a507a6a0ba60e88f9dd16a9dffa.svg" width="20" height="20" alt="">
+                    </div>
+                    <div class="chrome-btn disabled">
+                        <img src="69337b3d394a1ea6915b1ce6e5483b1a1ce90ae8.svg" width="20" height="20" alt="">
+                    </div>
+                    <div class="chrome-btn">
+                        <img src="cd5f8ddd9cd05e5a70b4900f9510c091ef3e3403.svg" width="20" height="20" alt="">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="search-input">
+                <img class="search-icon" src="d50170523de48f9e439535a1cb154901b8db3ac7.svg" alt="">
+                <span style="color: white; font-size: 13px;">Search Acme Inc</span>
+            </div>
+            
+            <div class="right">
+                <div class="slack-icons">
+                    <div class="chrome-btn">
+                        <img src="1c904194b5d99e46d2fcff17ce74bafd59c6373c.svg" width="20" height="20" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Conv AI Nav -->
+            <div class="conv-ai-nav">
+                <div class="workspace-switcher">
+                    <div class="workspace-avatar" style="background-image: url('1098648425577f06b5185200490cc42f387c3a1d.png')"></div>
+                </div>
+                
+                <div class="tabs-container">
+                    <div class="tab active">
+                        <img class="tab-icon" src="d73731cc7b9ece817ebd20a2e04d63628bef6bb7.svg" alt="">
+                        <div class="tab-label">Home</div>
+                    </div>
+                    
+                    <div class="tab">
+                        <img class="tab-icon" src="a76f44391aa184122b583b42de512d3faba3b1a8.svg" alt="">
+                        <div class="tab-label">DMs</div>
+                    </div>
+                    
+                    <div class="tab">
+                        <img class="tab-icon" src="0840d3a969d7c0fe341ef4a83670ad47c12688be.svg" alt="">
+                        <div class="tab-label">Activity</div>
+                    </div>
+                    
+                    <div class="tab">
+                        <img class="tab-icon" src="a1bc997b88023dfeb0553356e9ece2c5140b3a1d.svg" alt="">
+                        <div class="tab-label">Agentforce</div>
+                    </div>
+                    
+                    <div class="tab">
+                        <img class="tab-icon" src="91aec7e63c33da4b883a19b78e73dcd6426e5916.svg" alt="">
+                        <div class="tab-label">More</div>
+                    </div>
+                </div>
+                
+                <button class="action-button">
+                    <img src="9e5cc94c7a4e2fa7f0d221c5dba8bbb01d72d35a.svg" width="20" height="20" alt="">
+                </button>
+                
+                <div class="profile">
+                    <div class="profile-avatar" style="background-image: url('88a36fa6ec430934105e013c1ca0a59b22f514a1.png')"></div>
+                    <img class="status-indicator" src="141ea47f8f00ea65908f8eb101ab0316c9412c94.svg" alt="">
+                </div>
+            </div>
+            
+            <!-- Content Area - for future components -->
+            <div class="content-area">
+                More components coming...
+            </div>
+        </div>
+    </div>
+</body>
+</html>
