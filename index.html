@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Top Bar</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Lato, sans-serif; }
+        
+        .top-bar {
+            background: #481349;
+            width: 1024px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .left { width: 76px; height: 100%; display: flex; align-items: center; justify-content: center; }
+        .system-area { padding: 0 12px; }
+        .stoplights { display: flex; gap: 8px; }
+        .stoplight { width: 12px; height: 12px; }
+        
+        .navigation { 
+            width: 230px; 
+            height: 40px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: flex-end;
+            padding: 0 8px;
+            gap: 8px;
+        }
+        
+        .switcher { 
+            flex: 1; 
+            display: flex; 
+            align-items: center;
+            padding: 2px 4px;
+        }
+        
+        .chrome-btn {
+            width: 28px; 
+            height: 28px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .chrome-btn.active {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .chrome-btn.disabled {
+            opacity: 0.4;
+        }
+        
+        .arrows { display: flex; gap: 4px; }
+        
+        .search-input {
+            flex: 1;
+            min-width: 300px;
+            height: 28px;
+            background: rgba(249, 237, 255, 0.25);
+            border: none;
+            border-radius: 6px;
+            padding: 0 12px;
+            color: white;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .search-icon { width: 18px; height: 18px; }
+        
+        .right {
+            width: 260px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 8px;
+        }
+        
+        .slack-icons { padding: 0 8px; }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="left">
+            <div class="system-area">
+                <div class="stoplights">
+                    <img class="stoplight" src="c93e6cb03fc31a59c3560a7de9fa6fe7d089338f.svg" alt="">
+                    <img class="stoplight" src="2c7d9e6b65ec9107e029d45806d249e00a54b1b4.svg" alt="">
+                    <img class="stoplight" src="26b1599335f900d9786d46b0697d03b7570bfae5.svg" alt="">
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <div class="switcher">
+                <div class="chrome-btn">
+                    <img src="10e4a259e9f2ab48acabfbc8a04f4e48c23e2a56.svg" width="20" height="20" alt="">
+                </div>
+            </div>
+            
+            <div class="arrows">
+                <div class="chrome-btn active">
+                    <img src="8b04413a35777a507a6a0ba60e88f9dd16a9dffa.svg" width="20" height="20" alt="">
+                </div>
+                <div class="chrome-btn disabled">
+                    <img src="69337b3d394a1ea6915b1ce6e5483b1a1ce90ae8.svg" width="20" height="20" alt="">
+                </div>
+                <div class="chrome-btn">
+                    <img src="cd5f8ddd9cd05e5a70b4900f9510c091ef3e3403.svg" width="20" height="20" alt="">
+                </div>
+            </div>
+        </div>
+        
+        <div class="search-input">
+            <img class="search-icon" src="d50170523de48f9e439535a1cb154901b8db3ac7.svg" alt="">
+            <span style="color: white; font-size: 13px;">Search Acme Inc</span>
+        </div>
+        
+        <div class="right">
+            <div class="slack-icons">
+                <div class="chrome-btn">
+                    <img src="1c904194b5d99e46d2fcff17ce74bafd59c6373c.svg" width="20" height="20" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
